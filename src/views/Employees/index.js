@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import EmployeesItem from "../../components/EmployeesItem";
 
 const Employees = () => {
 
     const [employees, setEmployees] = useState([])
-    // const [is]
-
 
     useEffect(() => {
         axios('https://614af56ce4cc2900179eae02.mockapi.io/api/employees')
@@ -14,14 +13,13 @@ const Employees = () => {
 
     return (
 
-        <div className="row mt-5 ">
+        <div className="row mt-5 text-center">
             <div className='col-6 offset-md-3'>
                 <table className="table table-bordered border-primary">
                     <thead>
-                    <tr className='text-center table-info table-bordered border-primary'>
-                        <th scope="col">
-                            <label htmlFor='chec' className='me-3'>Select all</label>
-                            <input type='checkbox' id='chec'/>
+                    <tr className=' table-info table-bordered border-primary'>
+                        <th scope="col ">
+                            <input type='checkbox'/>
                         </th>
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
@@ -29,12 +27,7 @@ const Employees = () => {
                     </tr>
                     {
                         employees.map(el =>
-                            <tr className="table-danger table-bordered border-primary">
-                                <td className='text-center'><input type='checkbox'/></td>
-                                <td>{el.name}</td>
-                                <td>{el.surname}</td>
-                                <td>{el.age}</td>
-                            </tr>
+                            <EmployeesItem key={el.id} el={el} />
                         )
                     }
                     </thead>
