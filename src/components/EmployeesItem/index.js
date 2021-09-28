@@ -11,7 +11,7 @@ const EmployeesItem = ({el, isCheckedAll, handleCheck}) => {
         <tr className="table-danger  table-bordered border-primary">
             <td><input checked={isChecked} onChange={(e) => {
                 setIsChecked(e.target.checked)
-                handleCheck(el.id)
+                handleCheck(el.id, e.target.checked)
             }} type='checkbox'/></td>
             <td>{el.name}</td>
             <td>{el.surname}</td>
